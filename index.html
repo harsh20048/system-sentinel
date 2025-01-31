@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>System Diagnostics Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">System Diagnostics</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">System Overview</h2>
+                <div>
+                    <p><strong>Timestamp:</strong> {{ system_data.timestamp }}</p>
+                </div>
+                
+                <div class="mt-4">
+                    <h3 class="font-bold">Diagnostics</h3>
+                    {% for key, value in system_data.diagnostics.items() %}
+                    <div class="flex justify-between py-2 border-b">
+                        <span>{{ key | capitalize }}</span>
+                        <span>{{ value }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">System Analysis</h2>
+                <div>
+                    {% for key, value in system_data.analysis.items() %}
+                    <div class="flex justify-between py-2 border-b">
+                        <span>{{ key | capitalize }}</span>
+                        <span class="{% if value|string|float > 80 %}text-red-500{% else %}text-green-500{% endif %}">
+                            {{ value }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
