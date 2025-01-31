@@ -4,46 +4,117 @@
 System Sentinel is a comprehensive system diagnostics and monitoring tool that provides real-time insights into system health, performance, and potential issues across multiple platforms.
 
 ### Features
-- Cross-platform support (Windows, Linux, macOS)
-- Real-time system metrics collection
-- Hardware health monitoring
-- Configurable alert system
-- Web dashboard for system insights
+* Cross-platform support (Windows, Linux, macOS)
+* Real-time system metrics collection
+* Hardware health monitoring
+* Configurable alert system
+* Web dashboard for system insights
 
-### Prerequisites
+## Prerequisites
 - Python 3.8+
-- Required dependencies in `requirements.txt`
+- Git
+- Virtual environment support
 
-### Installation
+
+
+## Step-by-Step Installation
+
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/yourusername/system-sentinel.git
 cd system-sentinel
+```
+
+### 2. Create Virtual Environment
+```bash
+# On Windows
+python -m venv venv
+venv\Scripts\activate
+
+# On macOS/Linux
 python3 -m venv venv
 source venv/bin/activate
+```
+
+### 3. Comprehensive Requirements File
+Create a `requirements.txt` with the following contents:
+
+```
+# System Monitoring
+psutil==5.9.0
+GPUtil==1.4.0
+wmi==1.5.1
+pywin32==306
+
+# Web Framework
+flask==2.0.1
+requests==2.26.0
+
+# Database
+sqlalchemy==1.4.23
+
+# Configuration and Utilities
+python-dotenv==0.19.0
+apscheduler==3.8.1
+pytz==2023.3
+
+# Optional: Logging and Debugging
+logging
+```
+
+### 4. Install Dependencies
+```bash
 pip install -r requirements.txt
 ```
 
-### Configuration
+### 5. Configuration
 1. Copy `.env.example` to `.env`
 2. Configure environment variables for monitoring thresholds and alert settings
 
-### Running the Application
+#### `.env` File
+Create a `.env` file in the project root:
+```
+# Database Configuration
+DATABASE_URL=sqlite:///system_diagnostics.db
+
+# Monitoring Thresholds
+CPU_TEMP_MAX=85
+CPU_USAGE_MAX=90
+MEMORY_USAGE_MAX=90
+DISK_USAGE_MAX=90
+
+# Alert Configuration
+EMAIL_ALERTS_ENABLED=false
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+SENDER_EMAIL=your_email@example.com
+SENDER_PASSWORD=your_app_password
+
+# Webhook Alerts
+WEBHOOK_ALERTS_ENABLED=false
+WEBHOOK_URL=https://your-webhook-endpoint.com/alerts
+```
+
+### 6. Running the Application
 ```bash
+# Activate virtual environment first
 python app.py
 ```
 
-### Components
-- `config.py`: Configuration management
-- `app.py`: Flask web application
-- `src/core/diagnostics.py`: System metrics collection
-- `src/core/analyzer.py`: Performance analysis
-- `alerts.py`: Email and webhook alerting
-
-### Contributing
+## Contributing
 1. Fork the repository
 2. Create a feature branch
 3. Commit changes
 4. Push and create a pull request
 
-### License
+### Troubleshooting
+- Ensure all dependencies are correctly installed
+- Check `.env` file configurations
+- Verify Python version compatibility
+
+### Platform-Specific Notes
+- Windows: Requires `pywin32` for system monitoring
+- Linux/macOS: Some Windows-specific modules may need alternatives
+
+## License
 MIT License
