@@ -10,12 +10,62 @@ System Sentinel is a comprehensive system diagnostics and monitoring tool that p
 * Configurable alert system
 * Web dashboard for system insights
 
+## Project Structure
+```
+system_diagnostics/
+🔼
+🔽 frontend/                # React frontend directory
+│   🔽 src/
+│   │   🔽 app/
+│   │   🔽 components/
+│   │   🔽 lib/
+│   🔽 public/
+│   🔽 package.json
+│
+🔽 backend/                 # Flask backend directory
+│   🔽 src/
+│   │   🔽 core/
+│   │   │   🔽 __init__.py
+│   │   │   🔽 diagnostics.py
+│   │   │   🔽 analyzer.py
+│   │   🔽 database/
+│   │   │   🔽 __init__.py
+│   │   │   🔽 db_handler.py
+│   │   🔽 utils/
+│   │   │   🔽 __init__.py
+│   │   │   🔽 access.py
+│   │   │   🔽 base.py
+│   │   │   🔽 alerts.py
+│   │   🔽 api/             # New directory for API routes
+│   │       🔽 __init__.py
+│   │       🔽 metrics.py
+│   │       🔽 system.py
+│   🔽 static/
+│   │   🔽 favicon.ico
+│   │   🔽 js/
+│   │       🔽 dashboard.js
+│   🔽 templates/
+│   │   🔽 index.html
+│   │   🔽 dashboard.html
+│   │   🔽 error.html
+│   🔽 config.py
+│   🔽 requirements.txt
+│   🔽 app.py
+│
+🔽 tests/                   # Separate directory for tests
+│   🔽 test_core/
+│   🔽 test_api/
+│   🔽 test_database/
+│
+🔽 .env                     # Environment variables
+🔽 .gitignore
+🔽 README.md
+```
+
 ## Prerequisites
 - Python 3.8+
 - Git
 - Virtual environment support
-
-
 
 ## Step-by-Step Installation
 
@@ -118,3 +168,4 @@ python app.py
 
 ## License
 MIT License
+
